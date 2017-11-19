@@ -1,0 +1,33 @@
+---
+name: learn-bosh
+
+releases:
+- name: learn-bosh
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 2
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+instance_groups:
+- name: app
+  azs:
+  - z1
+  instances: 1
+  vm_type: minimal
+  stemcell: default
+  update:
+    max_in_flight: 1
+    serial: true
+  networks:
+  - name: default
+    static_ips:
+    - 10.244.0.20
+  jobs:
+  - name: app  
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: "3468.5"
