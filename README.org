@@ -1,0 +1,7 @@
+* Steps
+  - bosh alias-env
+    - bosh login
+  - bosh create-release
+  - bosh upload-release
+  - adjust manifest.yml
+  - bosh -e vbox -d learn-bosh deploy  manifest.yml
