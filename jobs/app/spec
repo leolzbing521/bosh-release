@@ -11,3 +11,14 @@ properties:
   port:
     description: "Port on which server is listening"
     default: 8080
+  bosh_deployment_ip: {}
+  bosh_client_id: {}
+  bosh_client_sec: {}
+  bosh_ca_cert: {}
+  bosh_uaa_client_id: {}
+  bosh_uaa_secret: {}
+  current_deployment_name: {}
+  example_service_network_az_single_select: {}
+  example_service_network_az_multi_select: {}
+  example_disk_type_dropdown: {}
+  example_vm_type_dropdown: {}
