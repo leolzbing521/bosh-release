@@ -3,6 +3,7 @@ name: app
 templates:
   ctl: bin/ctl
   run: bin/run
+  pre-start.sh: bin/pre-start
 
 packages:
 - simple_server
@@ -25,4 +26,4 @@ properties:
   example_vm_type_dropdown: {}
   example_vm_type_dropdown: {}
   lizhanbing_id:
-      default: 9000
+      default: "\"9000;adsfas\""

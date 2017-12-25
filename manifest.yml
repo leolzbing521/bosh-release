@@ -1,6 +1,5 @@
 ---
 name: learn-bosh
-
 releases:
 - name: learn-bosh
   version: latest
@@ -15,8 +14,8 @@ instance_groups:
 - name: app
   azs:
   - z1
-  instances: 1
-  vm_type: minimal
+  instances: 3
+  vm_type: small
   stemcell: default
   update:
     max_in_flight: 1
@@ -25,8 +24,27 @@ instance_groups:
   - name: default
     static_ips:
     - 10.244.0.20
+    - 10.244.0.21
+    - 10.244.0.22
   jobs:
   - name: app  
+- name: router
+  azs: 
+  - z1
+  instances: 1
+  vm_type: minimal
+  stemcell: default
+  networks: default
+  update:
+    max_in_flight: 1
+    serial: true
+  networks:
+  - name: default
+    static_ips:
+    - 10.244.0.23
+  jobs:
+  - name: router 
+
 stemcells:
 - alias: default
   os: ubuntu-trusty
