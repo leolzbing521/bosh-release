@@ -2,6 +2,7 @@
 name: app
 templates:
   ctl: bin/ctl
+  run: bin/run
 
 packages:
 - simple_server
