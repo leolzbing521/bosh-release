@@ -4,6 +4,8 @@ templates:
   ctl: bin/ctl
   run: bin/run
   pre-start.sh: bin/pre-start
+  post-start.sh: bin/post-start
+  drain.sh: bin/drain
 
 packages:
 - simple_server
