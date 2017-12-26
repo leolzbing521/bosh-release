@@ -3,6 +3,8 @@ name: learn-bosh
 releases:
 - name: learn-bosh
   version: latest
+- name: syslog
+  version: latest
 
 update:
   canaries: 1
@@ -28,6 +30,13 @@ instance_groups:
     - 10.244.0.22
   jobs:
   - name: app  
+    release: learn-bosh
+  - name: syslog_forwarder
+    release: syslog
+    consumers:
+      syslog_storer: {from: primary_syslog_storer}
+
+#---------------
 - name: router
   azs: 
   - z1
@@ -44,9 +53,34 @@ instance_groups:
     - 10.244.0.23
   jobs:
   - name: router 
+    release: learn-bosh
     properties:
       port: 8080
-#      servers: ["http://10.244.0.22:8888"]
+     # servers: ["http://10.244.0.22:8888"]
+  - name: syslog_forwarder
+    release: syslog
+    consumers:
+      syslog_storer: {from: primary_syslog_storer}
+
+- name: syslog_storer_primary
+  azs:
+   - z1
+  jobs:
+  - name: syslog_storer
+    release: syslog
+    provides:
+      syslog_storer: {as: primary_syslog_storer}
+  instances: 1
+  vm_type: minimal
+  persisitent_disk_type: 1GB
+  stemcell: default
+  networks:
+    - name: default
+      static_ips: [10.244.0.25]
+  properties:
+    syslog:
+    transport: tcp
+
 
 stemcells:
 - alias: default
