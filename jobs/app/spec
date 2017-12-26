@@ -7,6 +7,13 @@ templates:
   post-start.sh: bin/post-start
   drain.sh: bin/drain
 
+provides:
+- name: app_conn
+  type: conn
+  properties:
+  - port
+  - lizhanbing_id
+
 packages:
 - simple_server
 - ruby
@@ -28,4 +35,4 @@ properties:
   example_vm_type_dropdown: {}
   example_vm_type_dropdown: {}
   lizhanbing_id:
-      default: "\"9000;adsfas\""
+      default: [10.244.0.20,10.244.0.21,10.244.0.22]

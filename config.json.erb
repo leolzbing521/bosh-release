@@ -1,0 +1,16 @@
+<%=
+ static_id =nil
+ if_p('app.app_conn.lizhanbing_id') do |lizhanbing_id|
+      static_id=lizhanbing_id
+  end.else do
+    static_id = link('app_conn').p('lizhanbing_id')
+  end
+
+config = {}
+i=0
+while i<  static_id.length
+     config["servers"]= "http://" + #static_id[i] + ":" + "link('app_conn').p('port')"
+end
+
+config.to_json
+%>

@@ -46,7 +46,7 @@ instance_groups:
   - name: router 
     properties:
       port: 8080
-      servers: ["http://10.244.0.22:8888"]
+#      servers: ["http://10.244.0.22:8888"]
 
 stemcells:
 - alias: default

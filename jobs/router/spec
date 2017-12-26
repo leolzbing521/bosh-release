@@ -7,6 +7,9 @@ templates:
 packages:
 - simple_server
 - ruby
+consumes:
+- name: app_conn
+  type: conn
 
 properties:
   port:

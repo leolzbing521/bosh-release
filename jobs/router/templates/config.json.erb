@@ -1,3 +1,8 @@
+<% servers=[]
+  (0..(link('app_conn').instances.length-1)).to_a.each do |i|
+   servers.push("http://%s:%s"%[link('app_conn').instances[i].address,link('app_conn').p("port")])
+   end
+%>
 {
-  "servers": <%= p("servers") %>
+ "servers":<%=servers.to_json %>
 }
